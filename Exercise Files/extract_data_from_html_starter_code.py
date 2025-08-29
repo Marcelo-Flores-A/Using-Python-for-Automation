@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup 
 
 # define url of webpage to scrape from
-url = "https://www.feedbooks.com/search?cat=FBFIC016000&query=feedbooks"
+url = "https://www.feedbooks.com/search?cat=FBFIC016000&query=feedbooks" # This web page is actually out of service, so no book titles are to be found. MFA Augth 28, 2025
 
 # send a request to get html code from the url and save the response 
 response = requests.get(url, headers={"Accept": "text/html"}) 
@@ -13,7 +13,9 @@ parsed_response = BeautifulSoup(response.text, "html.parser")
 
 # find all book titles 
 # uncomment the following line of code and FILL IN
-# titles = FILL IN
+titles = parsed_response.find_all("a", class_="block__item-title")
 
 # iterate over the titles and print the text for each
 # write your code below
+for title in titles:
+    print(title.text)
