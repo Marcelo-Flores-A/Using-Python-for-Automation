@@ -6,9 +6,10 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 # define url
-url = "FILL IN"
+url = "https://www.amazon.com.mx/"
 
 # instantiate webdriver and open a chrome browser 
+# Creates a Chrome WebDriver instance using ChromeDriverManager to automatically download and manage the ChromeDriver executable
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 # maximize browser window
@@ -17,50 +18,20 @@ driver.maximize_window()
 # load the webpage 
 driver.get(url)
 
-# find the first name field 
-first_name = driver.find_element(By.XPATH, 'FILL IN')
-# fill out the first name field
-first_name.send_keys("FILL IN")
+# find the category option for narrowing down the search space 
+category_option = driver.find_element(By.XPATH, '//*[@id="searchDropdownBox"]/option[15]')
+# click on the category option
+category_option.click()
 
-# find the last name field 
-last_name = driver.find_element(By.XPATH, 'FILL IN')
-# find the last name field 
-last_name.send_keys("FILL IN")
+# find the search bar 
+first_name = driver.find_element(By.XPATH, '//*[@id="twotabsearchtextbox"]')
+# fill out the search bar field
+first_name.send_keys("Buro para recamara")
 
-# find the email field 
-email = driver.find_element(By.XPATH, 'FILL IN')
-# fill in the email field 
-email.send_keys("FILL IN")
-
-# find the telephone field 
-telephone = driver.find_element(By.XPATH, 'FILL IN')
-# fill in the telephone field 
-telephone.send_keys("FILL IN")
-
-# find the password field 
-password = driver.find_element(By.XPATH, 'FILL IN')
-# fill in the password field 
-password.send_keys("FILL IN")
-
-# find the password confirm field 
-password_confirm = driver.find_element(By.XPATH, 'FILL IN')
-# fill in the password confirm field 
-password_confirm.send_keys("FILL IN")
-
-# find the desired response to the newsletter subscribe field
-newsletter_subscribe = driver.find_element(By.XPATH, 'FILL IN')
-# click on it 
-newsletter_subscribe.click()
-
-# find the checkbox for agreeing to the terms 
-agree = driver.find_element(By.XPATH, 'FILL IN')
-# click on the agree checkbox
-agree.click()
-
-# find the continue button
-continue_button = driver.find_element(By.XPATH, 'FILL IN')
-# click on the continue button
-continue_button.click()
+# find the search button
+search_button = driver.find_element(By.XPATH, '//*[@id="nav-search-submit-button"]')
+# click on the search button
+search_button.click()
 
 # scroll down by 200 units to view the lower part of the page
 driver.execute_script("window.scrollTo(0, window.scrollY + 200)")
